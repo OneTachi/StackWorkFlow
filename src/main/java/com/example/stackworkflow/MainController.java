@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 public class MainController
 {
     Date currentTime = new Date();
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
     @FXML
     private Label date;
@@ -24,7 +24,7 @@ public class MainController
     public void initialize() {
         String currentDate = dateFormat.format(currentTime);
         date.setText(currentDate);
-        Rectangle exampleRect = new Rectangle(50, 50, Paint.valueOf("Blue"));
+        Rectangle exampleRect = new Rectangle(100, 50, Paint.valueOf("Blue"));
         Text exampleText = new Text("Example Task");
         task.getChildren().add(exampleRect);
         task.getChildren().add(exampleText);
