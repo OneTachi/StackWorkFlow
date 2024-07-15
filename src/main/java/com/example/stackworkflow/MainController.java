@@ -2,6 +2,10 @@ package com.example.stackworkflow;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -14,9 +18,16 @@ public class MainController
     private Label date;
 
     @FXML
+    private StackPane task;
+
+    @FXML
     public void initialize() {
         String currentDate = dateFormat.format(currentTime);
         date.setText(currentDate);
+        Rectangle exampleRect = new Rectangle(50, 50, Paint.valueOf("Blue"));
+        Text exampleText = new Text("Example Task");
+        task.getChildren().add(exampleRect);
+        task.getChildren().add(exampleText);
     }
 
 

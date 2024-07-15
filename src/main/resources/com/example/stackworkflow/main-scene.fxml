@@ -9,4 +9,5 @@
 
 <VBox fx:controller="com.example.stackworkflow.MainController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER">
     <Label fx:id="date"/>
+    <StackPane fx:id="task"/>
 </VBox>
