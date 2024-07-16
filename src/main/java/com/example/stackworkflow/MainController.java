@@ -40,6 +40,9 @@ public class MainController
     }
 
     public void addTask() {
-
+        String newTask = input.getText();
+        input.clear();
+        listOfTasks.add(newTask);
+        System.out.println("Added '" + newTask + "'!");
     }
 }
