@@ -49,7 +49,7 @@ public class MainController
             newTask = "Add a new task!";
         }
 
-        Text taskNode = (Text) task.getChildren().getFirst();
+        Text taskNode = (Text) task.getChildren().getLast();
         taskNode.setText(newTask);
     }
 
