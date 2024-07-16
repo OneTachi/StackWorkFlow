@@ -39,6 +39,20 @@ public class MainController
         task.getChildren().add(exampleText);
     }
 
+    public void nextTask() {
+        //TODO create animation
+        String newTask;
+        if (!listOfTasks.isEmpty()) {
+            newTask = listOfTasks.pop();
+        }
+        else {
+            newTask = "Add a new task!";
+        }
+
+        Text taskNode = (Text) task.getChildren().getFirst();
+        taskNode.setText(newTask);
+    }
+
     /**
      * Tracks a new task the user specifies in a Text Field.
      */
