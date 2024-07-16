@@ -39,7 +39,11 @@ public class MainController
         task.getChildren().add(exampleText);
     }
 
+    /**
+     * Tracks a new task the user specifies in a Text Field.
+     */
     public void addTask() {
+        // Grabbing text from Text Field & Resetting the Field
         String newTask = input.getText();
         input.clear();
         listOfTasks.add(newTask);
