@@ -77,6 +77,9 @@ public class MainController
         }
     }
 
+    /**
+     * Reads saved data and gets tasks back. Use on application start to initialize listOfTasks.
+     */
     public void readData() {
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("save.dat"))) {
             // The only object within the file must be an ArrayDeque, so we can safely ignore the warning.
