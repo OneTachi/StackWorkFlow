@@ -8,17 +8,17 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+import java.io.*;
 import java.util.ArrayDeque;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import java.util.Deque;
 
 public class MainController
 {
     Date currentTime = new Date();
     SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
-    Deque<String> listOfTasks = new ArrayDeque<String>();
+    ArrayDeque<String> listOfTasks = null;
 
     @FXML
     private Label date;
@@ -62,5 +62,29 @@ public class MainController
         input.clear();
         listOfTasks.add(newTask);
         System.out.println("Added '" + newTask + "'!");
+    }
+
+    /**
+     * Saves tasks to complete for the day. Use on application exit.
+     */
+    public void saveData() {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("save.dat"))) {
+            outputStream.writeObject(listOfTasks);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace(); //Temp
+        } catch (IOException e) {
+            e.printStackTrace(); //Temp
+        }
+    }
+
+    public void readData() {
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("save.dat"))) {
+            // The only object within the file must be an ArrayDeque, so we can safely ignore the warning.
+            listOfTasks = (ArrayDeque<String>) inputStream.readObject();
+        } catch (FileNotFoundException | ClassNotFoundException e) {
+            e.printStackTrace(); //Temp
+        } catch (IOException e) {
+            e.printStackTrace(); //Temp
+        }
     }
 }
