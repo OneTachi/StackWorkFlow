@@ -84,10 +84,11 @@ public class MainController
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("save.dat"))) {
             // The only object within the file must be an ArrayDeque, so we can safely ignore the warning.
             listOfTasks = (ArrayDeque<String>) inputStream.readObject();
-        } catch (FileNotFoundException | ClassNotFoundException e) {
-            e.printStackTrace(); //Temp
         } catch (IOException e) {
             e.printStackTrace(); //Temp
+        } catch (ClassNotFoundException e) {
+            // Create new ArrayDeque in case there isn't already one saved.
+            listOfTasks = new ArrayDeque<>();
         }
     }
 }
