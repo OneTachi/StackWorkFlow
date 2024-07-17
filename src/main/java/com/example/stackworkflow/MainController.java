@@ -32,6 +32,9 @@ public class MainController
     @FXML
     public void initialize() {
         String currentDate = dateFormat.format(currentTime);
+        //TODO: Check if new day from saved data
+
+        readData();
         date.setText(currentDate);
         Rectangle exampleRect = new Rectangle(100, 50, Paint.valueOf("Blue"));
         Text exampleText = new Text("Example Task");
@@ -85,10 +88,10 @@ public class MainController
             // The only object within the file must be an ArrayDeque, so we can safely ignore the warning.
             listOfTasks = (ArrayDeque<String>) inputStream.readObject();
         } catch (IOException e) {
-            e.printStackTrace(); //Temp
-        } catch (ClassNotFoundException e) {
             // Create new ArrayDeque in case there isn't already one saved.
             listOfTasks = new ArrayDeque<>();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Object on read is not ArrayDeque!");
         }
     }
 }
