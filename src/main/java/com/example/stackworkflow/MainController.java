@@ -75,6 +75,9 @@ public class MainController
      * TODO Implement it
      */
     public void saveData() {
+        // Add current task to be saved. "Add a Task" does not add an exception. It will be there regardless.
+        Text taskNode = (Text) task.getChildren().getLast();
+        listOfTasks.addFirst(taskNode.getText());
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("save.dat"))) {
             outputStream.writeObject(listOfTasks);
         } catch (FileNotFoundException e) {
