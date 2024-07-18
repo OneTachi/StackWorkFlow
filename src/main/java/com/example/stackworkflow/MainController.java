@@ -37,9 +37,12 @@ public class MainController
         readData();
         date.setText(currentDate);
         Rectangle exampleRect = new Rectangle(100, 50, Paint.valueOf("Blue"));
-        Text exampleText = new Text("Example Task");
+        Text startingText = new Text("Add a Task!");
+        if (!listOfTasks.isEmpty()) {
+            startingText.setText(listOfTasks.pop());
+        }
         task.getChildren().add(exampleRect);
-        task.getChildren().add(exampleText);
+        task.getChildren().add(startingText);
     }
 
     public void nextTask() {
