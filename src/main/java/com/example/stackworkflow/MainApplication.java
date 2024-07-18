@@ -9,11 +9,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainApplication extends Application {
+    private MainController controller;
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        MainController controller = fxmlLoader.getController();
+        controller = fxmlLoader.getController();
         scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 controller.addTask();
@@ -24,6 +26,11 @@ public class MainApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void stop() {
+        controller.saveData();
     }
 
     public static void main(String[] args) {
