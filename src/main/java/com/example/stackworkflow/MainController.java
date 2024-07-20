@@ -34,7 +34,7 @@ public class MainController
         String currentDate = dateFormat.format(currentTime);
         //TODO: Check if new day from saved data
 
-        readData();
+        readData(currentDate);
         date.setText(currentDate);
         Rectangle exampleRect = new Rectangle(100, 50, Paint.valueOf("Blue"));
         Text startingText = new Text("Add a Task!");
@@ -92,10 +92,16 @@ public class MainController
     /**
      * Reads saved data and gets tasks back. Use on application start to initialize listOfTasks.
      */
-    public void readData() {
+    public void readData(String currentDate) {
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("save.dat"))) {
-            // The only object within the file must be an ArrayDeque, so we can safely ignore the warning.
-            listOfTasks = (ArrayDeque<String>) inputStream.readObject();
+            // Check if task list is old or not
+            String pastDate = (String) inputStream.readObject();
+            if (pastDate.equals(currentDate)) {
+                // The only object within the file must be an ArrayDeque, so we can safely ignore the warning.
+                listOfTasks = (ArrayDeque<String>) inputStream.readObject();
+            } else {
+                listOfTasks = new ArrayDeque<>();
+            }
         } catch (IOException e) {
             // Create new ArrayDeque in case there isn't already one saved.
             listOfTasks = new ArrayDeque<>();
