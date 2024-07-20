@@ -72,7 +72,6 @@ public class MainController
 
     /**
      * Saves tasks to complete for the day. Use on application exit.
-     * TODO Implement it
      */
     public void saveData() {
         // Add current task to be saved. "Add a Task" does not add an exception. It will be there regardless.
@@ -80,6 +79,9 @@ public class MainController
         listOfTasks.addFirst(taskNode.getText());
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("save.dat"))) {
             outputStream.writeObject(listOfTasks);
+            // Grab current date to compare on launch
+            currentTime = new Date();
+            outputStream.writeObject(dateFormat.format(currentTime));
         } catch (FileNotFoundException e) {
             e.printStackTrace(); //Temp
         } catch (IOException e) {
