@@ -19,8 +19,10 @@ public class MainApplication extends Application {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 controller.addTask();
-            } else if(event.isControlDown() && event.getCode() == KeyCode.E) {
+            } else if (event.isControlDown() && event.getCode() == KeyCode.E) {
               controller.nextTask();
+            } else if (event.isControlDown() && event.getCode() == KeyCode.F) {
+                controller.flipVisibleTextField();
             }
         });
         stage.setTitle("Hello!");

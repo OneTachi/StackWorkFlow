@@ -32,8 +32,6 @@ public class MainController
     @FXML
     public void initialize() {
         String currentDate = dateFormat.format(currentTime);
-        //TODO: Check if new day from saved data
-
         readData(currentDate);
         date.setText(currentDate);
         Rectangle exampleRect = new Rectangle(100, 50, Paint.valueOf("Blue"));
@@ -107,6 +105,17 @@ public class MainController
             listOfTasks = new ArrayDeque<>();
         } catch (ClassNotFoundException e) {
             System.out.println("Object on read is not ArrayDeque!");
+        } catch (ClassCastException e) {
+            System.out.println("Cast Exception");
+            listOfTasks = new ArrayDeque<>();
         }
+    }
+
+    /**
+     * Flips whether the text box is visible or hidden.
+     */
+    public void flipVisibleTextField() {
+        boolean visible = input.isVisible();
+        input.setVisible(!visible);
     }
 }
