@@ -76,10 +76,11 @@ public class MainController
         Text taskNode = (Text) task.getChildren().getLast();
         listOfTasks.addFirst(taskNode.getText());
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("save.dat"))) {
-            outputStream.writeObject(listOfTasks);
             // Grab current date to compare on launch
             currentTime = new Date();
             outputStream.writeObject(dateFormat.format(currentTime));
+
+            outputStream.writeObject(listOfTasks);
         } catch (FileNotFoundException e) {
             e.printStackTrace(); //Temp
         } catch (IOException e) {
