@@ -7,6 +7,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainApplication extends Application {
     private MainController controller;
@@ -25,6 +26,7 @@ public class MainApplication extends Application {
                 controller.flipVisibleTextField();
             }
         });
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("main.css")).toExternalForm());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
