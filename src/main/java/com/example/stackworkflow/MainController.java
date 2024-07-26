@@ -1,6 +1,9 @@
 package com.example.stackworkflow;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
@@ -38,6 +41,12 @@ public class MainController
         if (!listOfTasks.isEmpty()) {
             startingText.setText(listOfTasks.pop());
         }
+    }
+
+    public void bindRect(Scene scene) {
+        Rectangle box = (Rectangle) task.getChildren().getFirst();
+        // We celebrate that the Bindings Class Exists! Also note that you must use a decimal value here. Otherwise, it bugs out.
+        box.widthProperty().bind(Bindings.multiply(.66, scene.widthProperty()));
     }
 
     public void nextTask() {
