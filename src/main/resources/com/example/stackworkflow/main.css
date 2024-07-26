@@ -5,3 +5,12 @@
 .verticalLayout {
     -fx-spacing: 2.5em;
 }
+
+.textbox {
+    -fx-arc-height: 1.5em;
+    -fx-arc-width: 1.5em;
+}
+
+.text {
+    -fx-font-size: 1.5em;
+}
