@@ -7,8 +7,13 @@
 <?import javafx.scene.layout.*?>
 <?import java.text.SimpleDateFormat ?>
 
-<VBox fx:controller="com.example.stackworkflow.MainController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER">
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+<VBox fx:controller="com.example.stackworkflow.MainController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" styleClass="verticalLayout">
     <Label fx:id="date" styleClass="date"/>
-    <StackPane fx:id="task"/>
+    <StackPane fx:id="task">
+        <Rectangle width="100" height="50" fill="blue"/>
+        <Text>Add a task!</Text>
+    </StackPane>
     <TextField fx:id="input"/>
 </VBox>

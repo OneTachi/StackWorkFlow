@@ -34,13 +34,10 @@ public class MainController
         String currentDate = dateFormat.format(currentTime);
         readData(currentDate);
         date.setText(currentDate);
-        Rectangle exampleRect = new Rectangle(100, 50, Paint.valueOf("Blue"));
-        Text startingText = new Text("Add a Task!");
+        Text startingText = (Text) task.getChildren().getLast();
         if (!listOfTasks.isEmpty()) {
             startingText.setText(listOfTasks.pop());
         }
-        task.getChildren().add(exampleRect);
-        task.getChildren().add(startingText);
     }
 
     public void nextTask() {
@@ -50,7 +47,7 @@ public class MainController
             newTask = listOfTasks.pop();
         }
         else {
-            newTask = "Add a new task!";
+            newTask = "Add a task!";
         }
 
         Text taskNode = (Text) task.getChildren().getLast();
