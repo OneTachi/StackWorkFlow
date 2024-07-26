@@ -62,6 +62,10 @@ public class MainController
         String newTask = input.getText();
         input.clear();
         listOfTasks.add(newTask);
+        // If there wasn't any previous data, we want to move to that task immediately!
+        if (listOfTasks.size() == 1) {
+            nextTask();
+        }
         System.out.println("Added '" + newTask + "'!");
     }
 
@@ -69,9 +73,11 @@ public class MainController
      * Saves tasks to complete for the day. Use on application exit.
      */
     public void saveData() {
-        // Add current task to be saved. "Add a Task" does not add an exception. It will be there regardless.
+        // Add current task to be saved.
         Text taskNode = (Text) task.getChildren().getLast();
-        listOfTasks.addFirst(taskNode.getText());
+        if (!taskNode.getText().equals("Add a task!")) {
+            listOfTasks.addFirst(taskNode.getText());
+        }
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("save.dat"))) {
             // Grab current date to compare on launch
             currentTime = new Date();
