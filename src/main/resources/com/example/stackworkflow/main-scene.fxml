@@ -13,7 +13,7 @@
     <Label fx:id="date" styleClass="date"/>
     <StackPane fx:id="task">
         <Rectangle width="100" height="50" fill="blue" styleClass="textbox"/>
-        <Text styleClass="text">Add a task!</Text>
+        <Text>Add a task!</Text>
     </StackPane>
     <TextField fx:id="input"/>
 </VBox>

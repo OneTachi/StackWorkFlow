@@ -1,6 +1,10 @@
 package com.example.stackworkflow;
 
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -41,10 +45,17 @@ public class MainController
         }
     }
 
-    public void bindRect(Scene scene) {
+    public void bindObjects(Scene scene) {
         Rectangle box = (Rectangle) task.getChildren().getFirst();
         // We celebrate that the Bindings Class Exists! Also note that you must use a decimal value here. Otherwise, it bugs out.
         box.widthProperty().bind(Bindings.multiply(.66, scene.widthProperty()));
+        box.heightProperty().bind(Bindings.multiply(.2, scene.heightProperty()));
+
+        // Scale Text inside Box. TODO: Make it scale nicer when the width changes
+        Text startingText = (Text) task.getChildren().getLast();
+        IntegerProperty fontSize = new SimpleIntegerProperty(10);
+        fontSize.bind(Bindings.multiply(.4, box.heightProperty()));
+        startingText.styleProperty().bind((Bindings.concat("-fx-font-size: ", fontSize.asString(), "px;")));
     }
 
     public void nextTask() {

@@ -27,7 +27,7 @@ public class MainApplication extends Application {
             }
         });
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("main.css")).toExternalForm());
-        controller.bindRect(scene);
+        controller.bindObjects(scene);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
