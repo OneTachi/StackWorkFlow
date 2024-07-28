@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import java.io.*;
 import java.util.ArrayDeque;
@@ -51,11 +52,15 @@ public class MainController
         box.widthProperty().bind(Bindings.multiply(.66, scene.widthProperty()));
         box.heightProperty().bind(Bindings.multiply(.2, scene.heightProperty()));
 
-        // Scale Text inside Box. TODO: Make it scale nicer when the width changes
+        // Scale Text inside Box. TODO: Potentially make even better?
         Text startingText = (Text) task.getChildren().getLast();
         IntegerProperty fontSize = new SimpleIntegerProperty(10);
-        fontSize.bind(Bindings.multiply(.4, box.heightProperty()));
+        fontSize.bind(Bindings.multiply(.09, Bindings.add(box.heightProperty(), box.widthProperty())));
         startingText.styleProperty().bind((Bindings.concat("-fx-font-size: ", fontSize.asString(), "px;")));
+        startingText.wrappingWidthProperty().bind(box.widthProperty());
+        startingText.setTextAlignment(TextAlignment.CENTER);
+
+        // TODO: Make Date scale with window size
     }
 
     public void nextTask() {
