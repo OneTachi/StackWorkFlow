@@ -60,7 +60,10 @@ public class MainController
         startingText.wrappingWidthProperty().bind(box.widthProperty());
         startingText.setTextAlignment(TextAlignment.CENTER);
 
-        // TODO: Make Date scale with window size
+        // Scale Date Text
+        IntegerProperty dateSize = new SimpleIntegerProperty(10);
+        dateSize.bind(Bindings.multiply(.06, Bindings.add(scene.heightProperty(), scene.widthProperty())));
+        date.styleProperty().bind(Bindings.concat("-fx-font-size: ", dateSize, "px;"));
     }
 
     public void nextTask() {

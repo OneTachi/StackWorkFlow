@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 <VBox fx:controller="com.example.stackworkflow.MainController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" styleClass="verticalLayout">
-    <Label fx:id="date" styleClass="date"/>
+    <Label fx:id="date"/>
     <StackPane fx:id="task">
         <Rectangle width="100" height="50" fill="blue" styleClass="textbox"/>
         <Text>Add a task!</Text>
