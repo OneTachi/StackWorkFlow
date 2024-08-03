@@ -1,0 +1,13 @@
+A simple application designed to help people do the things they want today. 
+
+It aims to relieve stress from the number of tasks a user wants to do, to keep track of their tasks, and eliminate comparison from past # of completed tasks that can demotivate a user. 
+
+To do this, the application recieves tasks from the user and puts it into a Deque to queue up the tasks. The queued up tasks are not visible to the user to prevent stress of "future work." I also chose to not randomize the task order so that the first thing the user wants to do is the first thing assigned. The user will see the current task on the screen and can tell the application when they are done that task to move onto the next. At the end of the day, any tasks still remaining are removed to not pile on work from the previous day. 
+
+I created the application using Java and used JavaFX for the UI. Most of the UI Elements are scalable so that the user can keep the app open in an uninstrusive way on the screen.    
+
+-- Controls --
+Control + E -> Next Task
+Control + F -> Hide Textbox
+
+To add a task, type in the name of your task into the Textbox and press Enter. 
